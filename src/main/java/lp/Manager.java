@@ -11,6 +11,5 @@ public class Manager {
 
     public static void main(String[] args) {
         LOG.info("test");
-//        javafx.application.Application.launch(App.class);
     }
 }
