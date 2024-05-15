@@ -6,6 +6,7 @@ import lp.enums.Texts;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class FileServiceImpl implements FileService {
@@ -21,7 +22,6 @@ public class FileServiceImpl implements FileService {
         return fileServiceImpl;
     }
 
-
     @Override
     public Properties loadConfigFile() {
         Properties properties = new Properties();
@@ -34,5 +34,10 @@ public class FileServiceImpl implements FileService {
             }
         }
         return properties;
+    }
+
+    @Override
+    public InputStream loadImage(String imageName) {
+        return getClass().getClassLoader().getResourceAsStream(imageName);
     }
 }

@@ -8,6 +8,7 @@ import lp.enums.Texts;
 import lp.fe.App;
 import org.apache.logging.log4j.Logger;
 
+import java.io.InputStream;
 import java.util.Properties;
 
 public class Manager {
@@ -41,5 +42,9 @@ public class Manager {
 
     public int getWindowHeight() {
         return Integer.parseInt(properties.getProperty(Texts.WINDOW_HEIGHT.getText()));
+    }
+
+    public InputStream getIconImage() {
+        return fileService.loadImage(Texts.ICON_IMAGE.getText());
     }
 }
