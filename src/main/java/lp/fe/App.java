@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 public class App extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         Group group = new Group();
         Scene scene = new Scene(group, 800, 500);
         stage.setScene(scene);
