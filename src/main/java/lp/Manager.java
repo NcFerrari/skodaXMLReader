@@ -14,8 +14,6 @@ public class Manager {
 
     private static Manager manager;
 
-    private final LoggerService loggerService = LoggerServiceImpl.getInstance(Manager.class);
-    private final Logger log = loggerService.getLog();
     private final FileService fileService = FileServiceImpl.getInstance();
     private final Properties properties = fileService.loadConfigFile();
 
@@ -28,6 +26,8 @@ public class Manager {
     }
 
     public Manager() {
+        LoggerService loggerService = LoggerServiceImpl.getInstance(Manager.class);
+        Logger log = loggerService.getLog();
         log.info(Texts.APPLICATION_STARTED.getText());
     }
 
