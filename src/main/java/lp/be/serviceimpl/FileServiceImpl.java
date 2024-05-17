@@ -22,6 +22,10 @@ public class FileServiceImpl implements FileService {
         return fileServiceImpl;
     }
 
+    private FileServiceImpl() {
+
+    }
+
     @Override
     public Properties loadConfigFile() {
         Properties properties = new Properties();

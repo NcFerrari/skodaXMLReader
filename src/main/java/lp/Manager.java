@@ -1,36 +1,43 @@
 package lp;
 
+import lombok.Data;
 import lp.be.service.FileService;
 import lp.be.service.LoggerService;
 import lp.be.serviceimpl.FileServiceImpl;
 import lp.be.serviceimpl.LoggerServiceImpl;
+import lp.enums.ReportStatus;
+import lp.enums.Suffix;
 import lp.enums.Texts;
 import lp.fe.App;
-import lp.fe.DragAndDropTest;
+import lp.validations.FileValidator;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Properties;
 
+@Data
 public class Manager {
 
     private static Manager manager;
 
     private final FileService fileService = FileServiceImpl.getInstance();
     private final Properties properties = fileService.loadConfigFile();
+    private final LoggerService loggerService = LoggerServiceImpl.getInstance(Manager.class);
+    private final Logger log = loggerService.getLog();
+    private List<File> listOfFiles;
 
     public static Manager getInstance() {
         if (manager == null) {
             manager = new Manager();
             javafx.application.Application.launch(App.class);
-//            javafx.application.Application.launch(DragAndDropTest.class);
         }
         return manager;
     }
 
-    public Manager() {
-        LoggerService loggerService = LoggerServiceImpl.getInstance(Manager.class);
-        Logger log = loggerService.getLog();
+    private Manager() {
+
         log.debug(Texts.APPLICATION_STARTED.getText());
     }
 
@@ -48,5 +55,19 @@ public class Manager {
 
     public InputStream getIconImage() {
         return fileService.loadImage(Texts.ICON_IMAGE.getText());
+    }
+
+    public boolean validateFiles() {
+        boolean[] result = {true};
+        StringBuilder reports = new StringBuilder();
+        listOfFiles.forEach(file -> {
+            String validationResult = FileValidator.getInstance().validateFileSuffix(file, Suffix.XML);
+            if (!validationResult.equals(ReportStatus.OK.name().toUpperCase())) {
+                result[0] = false;
+                reports.append(validationResult);
+            }
+        });
+        log.debug(reports);
+        return result[0];
     }
 }

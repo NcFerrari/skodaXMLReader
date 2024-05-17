@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import lp.Manager;
@@ -47,13 +49,38 @@ public class App extends Application {
         mainPane.getChildren().add(draggedPane);
 
         Label label = new Label(Texts.INSERT_XML.getText());
-        label.setLayoutX(draggedPane.getWidth() / 2 - label.getWidth() / 2);
-        label.setLayoutX(draggedPane.getHeight() / 2 - label.getHeight() / 2);
+        label.setPrefSize(200, 300);
+        label.setLayoutX(mainPane.getWidth() / 4 - label.getPrefWidth() / 2);
+        label.setLayoutY(mainPane.getHeight() / 4 - label.getPrefHeight() / 2);
+        label.setWrapText(true);
         draggedPane.getChildren().add(label);
     }
 
     private void addDragAndDropListeners() {
+        draggedPane.setOnDragOver(evt -> {
+            if (evt.getGestureSource() != draggedPane && evt.getDragboard().hasFiles()) {
+                evt.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+            }
+            evt.consume();
+        });
 
+        draggedPane.setOnDragDropped(evt -> {
+            Dragboard dragboard = evt.getDragboard();
+            boolean success = false;
+            if (dragboard.hasFiles()) {
+                manager.setListOfFiles(dragboard.getFiles());
+                success = manager.validateFiles();
+            }
+            evt.setDropCompleted(success);
+            evt.consume();
+            if (success) {
+                showLoadedFiles();
+            }
+        });
+    }
+
+    private void showLoadedFiles() {
+        mainPane.getChildren().remove(draggedPane);
     }
 
     private void addLogo() {
@@ -77,6 +104,7 @@ public class App extends Application {
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
+                        log.error(e);
                     }
                 }
             });

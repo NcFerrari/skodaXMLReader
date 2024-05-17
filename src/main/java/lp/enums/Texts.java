@@ -15,7 +15,12 @@ public enum Texts {
     FX_INIT("init FX"),
     ADDING_LOGO("added LOGO"),
     DRAGGED_PANE("dragged-pane"),
-    INSERT_XML("Přetáhněte XML soubor(y) do tohoto pole");
+    INSERT_XML("Přetáhněte XML soubor(y) do tohoto pole"),
+    FILE_NOT_EXISTS("Soubor neexistuje!\n"),
+    FILE_TEXT("Soubor "),
+    FILE_WITHOUT_SUFFIX(" nemá žádnou příponu!\n"),
+    FILE_SUFFIX("Přípona souboru "),
+    NOT_XML(" není XML!\n");
 
     private final String text;
 
