@@ -6,6 +6,7 @@ import lp.be.serviceimpl.FileServiceImpl;
 import lp.be.serviceimpl.LoggerServiceImpl;
 import lp.enums.Texts;
 import lp.fe.App;
+import lp.fe.DragAndDropTest;
 import org.apache.logging.log4j.Logger;
 
 import java.io.InputStream;
@@ -22,6 +23,7 @@ public class Manager {
         if (manager == null) {
             manager = new Manager();
             javafx.application.Application.launch(App.class);
+//            javafx.application.Application.launch(DragAndDropTest.class);
         }
         return manager;
     }

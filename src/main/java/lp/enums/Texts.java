@@ -13,7 +13,9 @@ public enum Texts {
     CSS_BASIC("css/basicFrame.css"),
     ICON_IMAGE("images/skoda_image.png"),
     FX_INIT("init FX"),
-    ADDING_LOGO("added LOGO");
+    ADDING_LOGO("added LOGO"),
+    DRAGGED_PANE("dragged-pane"),
+    INSERT_XML("Přetáhněte XML soubor(y) do tohoto pole");
 
     private final String text;
 
