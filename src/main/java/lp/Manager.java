@@ -29,7 +29,7 @@ public class Manager {
     public Manager() {
         LoggerService loggerService = LoggerServiceImpl.getInstance(Manager.class);
         Logger log = loggerService.getLog();
-        log.info(Texts.APPLICATION_STARTED.getText());
+        log.debug(Texts.APPLICATION_STARTED.getText());
     }
 
     public static void main(String[] args) {

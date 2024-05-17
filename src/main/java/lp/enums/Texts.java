@@ -11,7 +11,9 @@ public enum Texts {
     WINDOW_HEIGHT("window.height"),
     CONFIG_FILE_NAME("config.properties"),
     CSS_BASIC("css/basicFrame.css"),
-    ICON_IMAGE("images/skoda_image.png");
+    ICON_IMAGE("images/skoda_image.png"),
+    FX_INIT("init FX"),
+    ADDING_LOGO("added LOGO");
 
     private final String text;
 
