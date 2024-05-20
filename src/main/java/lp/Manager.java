@@ -14,10 +14,11 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.InputStream;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Properties;
+import java.util.Set;
 
 @Getter
 public class Manager {
@@ -28,7 +29,7 @@ public class Manager {
     private final Properties properties = fileService.loadConfigFile();
     private final LoggerService loggerService = LoggerServiceImpl.getInstance(Manager.class);
     private final Logger log = loggerService.getLog();
-    private final List<File> listOfFiles = new ArrayList<>();
+    private final Set<File> listOfFiles = new HashSet<>();
 
     public static Manager getInstance() {
         if (manager == null) {

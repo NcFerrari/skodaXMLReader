@@ -1,8 +1,6 @@
 package lp.fe;
 
 import javafx.application.Application;
-import javafx.beans.InvalidationListener;
-import javafx.collections.ListChangeListener;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -99,13 +97,15 @@ public class App extends Application {
     }
 
     private void showLoadedFiles() {
-        mainPane.getChildren().remove(draggedPane);
         if (xmlListView == null) {
             xmlListView = new ListView<>();
             xmlListView.setPrefSize((double) manager.getWindowWidth() / 5, manager.getWindowHeight());
             addXMLListViewListener();
         }
-        mainPane.getChildren().add(xmlListView);
+        if (!mainPane.getChildren().contains(xmlListView)) {
+            mainPane.getChildren().remove(draggedPane);
+            mainPane.getChildren().add(xmlListView);
+        }
         xmlListView.getItems().clear();
         xmlListView.getItems().addAll(manager.getListOfFiles().stream().map(File::getName).sorted().toList());
     }
