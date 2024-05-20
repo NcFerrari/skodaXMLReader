@@ -20,7 +20,9 @@ public enum Texts {
     FILE_TEXT("Soubor "),
     FILE_WITHOUT_SUFFIX(" nemá žádnou příponu!\n"),
     FILE_SUFFIX("Přípona souboru "),
-    NOT_XML(" není XML!\n");
+    NOT_XML(" není XML!\n"),
+    COMMA(", "),
+    LOADED_XML("Načtena tato XMLka: ");
 
     private final String text;
 
