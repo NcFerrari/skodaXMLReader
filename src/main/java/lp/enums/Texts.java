@@ -15,6 +15,8 @@ public enum Texts {
     FX_INIT("init FX"),
     ADDING_LOGO("added LOGO"),
     DRAGGED_PANE("dragged-pane"),
+    INFO_PANE("info-pane"),
+    INFO_LABELS("info-labels"),
     INSERT_XML("Přetáhněte XML soubor(y) do tohoto pole"),
     FILE_NOT_EXISTS("Soubor neexistuje!\n"),
     FILE_TEXT("Soubor "),
@@ -22,7 +24,9 @@ public enum Texts {
     FILE_SUFFIX("Přípona souboru "),
     NOT_XML(" není XML!\n"),
     COMMA(", "),
-    LOADED_XML("Načtena tato XMLka: ");
+    LOADED_XML("Načtena tato XMLka: "),
+    DELETE_INFO("Pro odstranění XMLka ze seznamu klikněte na dané XML a zmačkněte klávesu delete"),
+    ADD_INFO("Pokud chcete přidat další XMLko, tak stačí přetáhnout XMLko do seznamu vlevo");
 
     private final String text;
 

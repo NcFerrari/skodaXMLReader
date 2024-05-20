@@ -14,3 +14,16 @@ Pane {
 .dragged-pane {
     -fx-font-size: 30px;
 }
+
+.info-pane {
+    -fx-background-color: #43b99e;
+}
+
+.info-labels {
+    -fx-font-size: 18px;
+    -fx-font-family: "Corbel";
+    -fx-border-width: 3px;
+    -fx-border-color: #92c892;
+    -fx-border-radius: 15px;
+    -fx-padding: 0 0 0 15;
+}

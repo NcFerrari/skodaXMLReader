@@ -1,6 +1,7 @@
 package lp.fe;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -11,6 +12,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lp.Manager;
 import lp.be.service.LoggerService;
@@ -28,6 +30,7 @@ public class App extends Application {
     private Pane mainPane;
     private Pane draggedPane;
     private ListView<String> xmlListView;
+    private VBox infoPane;
 
     @Override
     public void start(Stage stage) {
@@ -39,6 +42,7 @@ public class App extends Application {
         stage.getIcons().add(new Image(manager.getIconImage()));
         stage.setTitle(Texts.APPLICATION_NAME.getText());
         stage.setOnCloseRequest(windowEvent -> System.exit(0));
+        stage.setResizable(false);
         stage.show();
 
         addLogo();
@@ -99,15 +103,36 @@ public class App extends Application {
     private void showLoadedFiles() {
         if (xmlListView == null) {
             xmlListView = new ListView<>();
-            xmlListView.setPrefSize((double) manager.getWindowWidth() / 5, manager.getWindowHeight());
+            xmlListView.setPrefSize(manager.getWindowWidth() / 5.0, manager.getWindowHeight());
             addXMLListViewListener();
         }
+        initInfoPane();
+
         if (!mainPane.getChildren().contains(xmlListView)) {
             mainPane.getChildren().remove(draggedPane);
             mainPane.getChildren().add(xmlListView);
+            mainPane.getChildren().add(infoPane);
         }
         xmlListView.getItems().clear();
         xmlListView.getItems().addAll(manager.getListOfFiles().stream().map(File::getName).sorted().toList());
+    }
+
+    private void initInfoPane() {
+        if (infoPane == null) {
+            infoPane = new VBox();
+            infoPane.getStyleClass().add(Texts.INFO_PANE.getText());
+            infoPane.setPrefSize(4 * manager.getWindowWidth() / 5.0, manager.getWindowHeight() / 10.0);
+            infoPane.setLayoutX(manager.getWindowWidth() / 5.0);
+
+            Label deleteLabel = new Label(Texts.DELETE_INFO.getText());
+            deleteLabel.setPrefSize(infoPane.getPrefWidth(), infoPane.getPrefHeight() / 2);
+            deleteLabel.getStyleClass().add(Texts.INFO_LABELS.getText());
+
+            Label addLabel = new Label(Texts.ADD_INFO.getText());
+            addLabel.setPrefSize(deleteLabel.getPrefWidth(), deleteLabel.getPrefHeight());
+            addLabel.getStyleClass().add(Texts.INFO_LABELS.getText());
+            infoPane.getChildren().addAll(deleteLabel, addLabel);
+        }
     }
 
     private void addXMLListViewListener() {
@@ -124,6 +149,7 @@ public class App extends Application {
     private void possibleSwapPanes() {
         if (xmlListView.getItems().isEmpty()) {
             mainPane.getChildren().remove(xmlListView);
+            mainPane.getChildren().remove(infoPane);
             settingDragAndDropPane();
         }
     }
