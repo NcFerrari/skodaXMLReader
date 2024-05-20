@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
@@ -30,6 +31,7 @@ public class App extends Application {
     private Pane draggedPane;
     private ListView<String> xmlListView;
     private VBox infoPane;
+    private DataPane dataPane;
 
     @Override
     public void start(Stage stage) {
@@ -106,11 +108,11 @@ public class App extends Application {
             addXMLListViewListener();
         }
         initInfoPane();
+        dataPane = new DataPane();
 
         if (!mainPane.getChildren().contains(xmlListView)) {
             mainPane.getChildren().remove(draggedPane);
-            mainPane.getChildren().add(xmlListView);
-            mainPane.getChildren().add(infoPane);
+            mainPane.getChildren().addAll(xmlListView, infoPane, dataPane);
         }
         xmlListView.getItems().clear();
         xmlListView.getItems().addAll(manager.getListOfFiles().stream().map(File::getName).sorted().toList());

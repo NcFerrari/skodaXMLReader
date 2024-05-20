@@ -17,6 +17,7 @@ public enum Texts {
     DRAGGED_PANE("dragged-pane"),
     INFO_PANE("info-pane"),
     INFO_LABELS("info-labels"),
+    DATA_PANE("data-pane"),
     INSERT_XML("Přetáhněte XML soubor(y) do tohoto pole"),
     FILE_NOT_EXISTS("Soubor neexistuje!\n"),
     FILE_TEXT("Soubor "),
