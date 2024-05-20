@@ -9,7 +9,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.TransferMode;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
@@ -47,7 +46,10 @@ public class App extends Application {
         stage.show();
 
         addLogo();
-        settingDragAndDropPane();
+//        settingDragAndDropPane();
+//        SectorPaneData sectorPaneData = new SectorPaneData();
+//        SectorPane sectorPane = new SectorPane(sectorPaneData);
+//        mainPane.getChildren().add(sectorPane);
     }
 
     private void settingDragAndDropPane() {
