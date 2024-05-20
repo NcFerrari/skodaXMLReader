@@ -1,6 +1,6 @@
 package lp;
 
-import lombok.Data;
+import lombok.Getter;
 import lp.be.service.FileService;
 import lp.be.service.LoggerService;
 import lp.be.serviceimpl.FileServiceImpl;
@@ -14,10 +14,12 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Properties;
 
-@Data
+@Getter
 public class Manager {
 
     private static Manager manager;
@@ -26,7 +28,7 @@ public class Manager {
     private final Properties properties = fileService.loadConfigFile();
     private final LoggerService loggerService = LoggerServiceImpl.getInstance(Manager.class);
     private final Logger log = loggerService.getLog();
-    private List<File> listOfFiles;
+    private final List<File> listOfFiles = new ArrayList<>();
 
     public static Manager getInstance() {
         if (manager == null) {
@@ -69,5 +71,14 @@ public class Manager {
         });
         log.debug(reports);
         return result[0];
+    }
+
+    public void addToList(List<File> files) {
+        listOfFiles.addAll(files);
+    }
+
+    public void removeItemFromListOfFiles(String fileName) {
+        Optional<File> optional = listOfFiles.stream().filter(file -> file.getName().equals(fileName)).findFirst();
+        optional.ifPresent(listOfFiles::remove);
     }
 }

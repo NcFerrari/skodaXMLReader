@@ -1,6 +1,8 @@
 package lp.fe;
 
 import javafx.application.Application;
+import javafx.beans.InvalidationListener;
+import javafx.collections.ListChangeListener;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -82,7 +84,7 @@ public class App extends Application {
             Dragboard dragboard = evt.getDragboard();
             boolean success = false;
             if (dragboard.hasFiles()) {
-                manager.setListOfFiles(dragboard.getFiles());
+                manager.addToList(dragboard.getFiles());
                 success = manager.validateFiles();
             }
             evt.setDropCompleted(success);
@@ -111,10 +113,12 @@ public class App extends Application {
     private void addXMLListViewListener() {
         xmlListView.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode().equals(KeyCode.DELETE)) {
-                xmlListView.getItems().remove(xmlListView.getSelectionModel().getSelectedIndex());
+                manager.removeItemFromListOfFiles(xmlListView.getSelectionModel().getSelectedItem());
+                xmlListView.getItems().remove(xmlListView.getSelectionModel().getSelectedItem());
                 possibleSwapPanes();
             }
         });
+        addDragAndDropListeners(xmlListView);
     }
 
     private void possibleSwapPanes() {
