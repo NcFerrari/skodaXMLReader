@@ -60,10 +60,10 @@ public class Manager {
         return fileService.loadImage(Texts.ICON_IMAGE.getText());
     }
 
-    public boolean validateFiles() {
+    public boolean validateFiles(List<File> files) {
         boolean[] result = {true};
         StringBuilder reports = new StringBuilder();
-        listOfFiles.forEach(file -> {
+        files.forEach(file -> {
             String validationResult = FileValidator.getInstance().validateFileSuffix(file, Suffix.XML);
             if (!validationResult.equals(ReportStatus.OK.name().toUpperCase())) {
                 result[0] = false;

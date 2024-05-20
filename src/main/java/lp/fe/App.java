@@ -1,7 +1,6 @@
 package lp.fe;
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -86,12 +85,12 @@ public class App extends Application {
             Dragboard dragboard = evt.getDragboard();
             boolean success = false;
             if (dragboard.hasFiles()) {
-                manager.addToList(dragboard.getFiles());
-                success = manager.validateFiles();
+                success = manager.validateFiles(dragboard.getFiles());
             }
             evt.setDropCompleted(success);
             evt.consume();
             if (success) {
+                manager.addToList(dragboard.getFiles());
                 showLoadedFiles();
                 StringBuilder stringBuilder = new StringBuilder();
                 manager.getListOfFiles().forEach(file -> stringBuilder.append(file).append(Texts.COMMA.getText()));
@@ -140,6 +139,7 @@ public class App extends Application {
             if (keyEvent.getCode().equals(KeyCode.DELETE)) {
                 manager.removeItemFromListOfFiles(xmlListView.getSelectionModel().getSelectedItem());
                 xmlListView.getItems().remove(xmlListView.getSelectionModel().getSelectedItem());
+                xmlListView.getSelectionModel().select(-1);
                 possibleSwapPanes();
             }
         });
