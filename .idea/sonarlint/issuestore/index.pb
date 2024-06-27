@@ -149,3 +149,12 @@ F
 logs/2024-05-20/10.log,7\c\7c4f37c9b846b8ecefda6a68d79eb9cfac44e46a
 F
 logs/2024-05-20/09.log,1\9\19e44f55a1008f937281d47f1c2cd662971c499c
+F
+logs/2024-06-27/13.log,d\c\dce3b050403852ce331ad6fda7c9574538db105c
+F
+logs/2024-06-27/12.log,b\4\b42d3c4c28f3f24be0ff1bc58b0651c4691ce017
+Å
+Q.idea/sonarlint/securityhotspotstore/1/d/1d6f137ed1f3d2f0a99dd6a0a153e6f9abc39407,f\f\ffb5d337534f7f2e8c71010cffe418884dcba967
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
