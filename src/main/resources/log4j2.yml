@@ -26,7 +26,7 @@ Configuration:
   #        pattern: "[%d] %-8p (%-50c) : %m%n"
   Loggers:
     Root:
-      level: INFO
+      level: DEBUG
       AppenderRef:
         - ref: Console
         - ref: SaveToFile

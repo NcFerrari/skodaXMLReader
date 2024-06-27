@@ -1,5 +1,4 @@
 
-t
-java:S1450""WRemove the "dataPane" field and declare it as a local variable in the relevant methods.(ÃØþæ8ª­®›ü1
-|
-java:S2142¶"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8Ï­®›ü1
+Y	java:S125À"<This block of commented-out lines of code should be removed.(òÉ¼æ8Ä¢¤Ë…2
+O
+java:S1144Ã"1Remove this unused private "temporaryCSS" method.(¼£ì8Ç¢¤Ë…2

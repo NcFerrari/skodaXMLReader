@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,7 +16,9 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lp.Manager;
+import lp.be.service.FileService;
 import lp.be.service.LoggerService;
+import lp.be.serviceimpl.FileServiceImpl;
 import lp.be.serviceimpl.LoggerServiceImpl;
 import lp.enums.Texts;
 import org.apache.logging.log4j.Logger;
@@ -27,9 +30,10 @@ public class App extends Application {
     private final LoggerService loggerService = LoggerServiceImpl.getInstance(Manager.class);
     private final Logger log = loggerService.getLog();
     private final Manager manager = Manager.getInstance();
+    private final FileService fileService = FileServiceImpl.getInstance();
     private Pane mainPane;
     private Pane draggedPane;
-    private ListView<String> xmlListView;
+    private ListView<File> xmlListView;
     private VBox infoPane;
     private DataPane dataPane;
 
@@ -107,6 +111,17 @@ public class App extends Application {
     private void showLoadedFiles() {
         if (xmlListView == null) {
             xmlListView = new ListView<>();
+            xmlListView.setCellFactory(fileListView -> new ListCell<>() {
+                @Override
+                protected void updateItem(File file, boolean empty) {
+                    super.updateItem(file, empty);
+                    if (empty || file == null) {
+                        setText(null);
+                    } else {
+                        setText(file.getName());
+                    }
+                }
+            });
             xmlListView.setPrefSize(manager.getWindowWidth() / 5.0, manager.getWindowHeight());
             addXMLListViewListener();
         }
@@ -118,7 +133,7 @@ public class App extends Application {
             mainPane.getChildren().addAll(xmlListView, infoPane, dataPane);
         }
         xmlListView.getItems().clear();
-        xmlListView.getItems().addAll(manager.getListOfFiles().stream().map(File::getName).sorted().toList());
+        xmlListView.getItems().addAll(manager.getListOfFiles().stream().sorted().toList());
     }
 
     private void initInfoPane() {
@@ -148,6 +163,7 @@ public class App extends Application {
                 possibleSwapPanes();
             }
         });
+        xmlListView.setOnMousePressed(evt -> fileService.loadXMLFile(xmlListView.getSelectionModel().getSelectedItem()));
         addDragAndDropListeners(xmlListView);
     }
 
@@ -155,6 +171,7 @@ public class App extends Application {
         if (xmlListView.getItems().isEmpty()) {
             mainPane.getChildren().remove(xmlListView);
             mainPane.getChildren().remove(infoPane);
+            mainPane.getChildren().remove(dataPane);
             settingDragAndDropPane();
         }
     }
@@ -172,6 +189,10 @@ public class App extends Application {
 
     private void loadCss(Scene scene) {
         scene.getStylesheets().add(Texts.CSS_BASIC.getText());
+//        temporaryCSS(scene);
+    }
+
+    private void temporaryCSS(Scene scene) {
         Platform.runLater(() -> {
             Thread t = new Thread(() -> {
                 while (true) {
@@ -181,6 +202,7 @@ public class App extends Application {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         log.error(e);
+                        Thread.currentThread().interrupt();
                     }
                 }
             });

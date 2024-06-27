@@ -5,6 +5,7 @@ import lp.be.service.LoggerService;
 import lp.enums.Texts;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -43,5 +44,10 @@ public class FileServiceImpl implements FileService {
     @Override
     public InputStream loadImage(String imageName) {
         return getClass().getClassLoader().getResourceAsStream(imageName);
+    }
+
+    @Override
+    public void loadXMLFile(File xmlFile) {
+
     }
 }

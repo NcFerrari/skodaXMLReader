@@ -41,7 +41,6 @@ public class Manager {
     }
 
     private Manager() {
-
         log.debug(Texts.APPLICATION_STARTED.getText());
     }
 
@@ -79,8 +78,8 @@ public class Manager {
         listOfFiles.addAll(files);
     }
 
-    public void removeItemFromListOfFiles(String fileName) {
-        Optional<File> optional = listOfFiles.stream().filter(file -> file.getName().equals(fileName)).findFirst();
+    public void removeItemFromListOfFiles(File selectedFile) {
+        Optional<File> optional = listOfFiles.stream().filter(file -> file.equals(selectedFile)).findFirst();
         optional.ifPresent(listOfFiles::remove);
     }
 

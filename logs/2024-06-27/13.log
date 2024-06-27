@@ -1,0 +1,25 @@
+[2024-06-27 13:01:55,982] DEBUG    (lp.Manager                                        ) : application started
+[2024-06-27 13:01:56,537] DEBUG    (lp.Manager                                        ) : init FX
+[2024-06-27 13:01:56,971] DEBUG    (lp.Manager                                        ) : added LOGO
+[2024-06-27 13:01:58,615] DEBUG    (lp.Manager                                        ) : 
+[2024-06-27 13:01:58,645] DEBUG    (lp.Manager                                        ) : Načtena tato XMLka: C:\Users\lpesek\Desktop\8159587_show-rq-parameters.xml, 
+[2024-06-27 13:17:18,053] DEBUG    (lp.Manager                                        ) : application started
+[2024-06-27 13:17:18,697] DEBUG    (lp.Manager                                        ) : init FX
+[2024-06-27 13:17:19,210] DEBUG    (lp.Manager                                        ) : added LOGO
+[2024-06-27 13:17:22,000] DEBUG    (lp.Manager                                        ) : 
+[2024-06-27 13:17:22,023] DEBUG    (lp.Manager                                        ) : Načtena tato XMLka: C:\Users\lpesek\Desktop\a.xml, C:\Users\lpesek\Desktop\8159587_show-rq-parameters.xml, 
+[2024-06-27 13:19:29,876] DEBUG    (lp.Manager                                        ) : application started
+[2024-06-27 13:19:30,265] DEBUG    (lp.Manager                                        ) : init FX
+[2024-06-27 13:19:30,606] DEBUG    (lp.Manager                                        ) : added LOGO
+[2024-06-27 13:19:32,546] DEBUG    (lp.Manager                                        ) : 
+[2024-06-27 13:19:32,570] DEBUG    (lp.Manager                                        ) : Načtena tato XMLka: C:\Users\lpesek\Desktop\a.xml, C:\Users\lpesek\Desktop\8159587_show-rq-parameters.xml, 
+[2024-06-27 13:20:56,427] DEBUG    (lp.Manager                                        ) : application started
+[2024-06-27 13:20:56,949] DEBUG    (lp.Manager                                        ) : init FX
+[2024-06-27 13:20:57,337] DEBUG    (lp.Manager                                        ) : added LOGO
+[2024-06-27 13:20:58,773] DEBUG    (lp.Manager                                        ) : 
+[2024-06-27 13:20:58,804] DEBUG    (lp.Manager                                        ) : Načtena tato XMLka: C:\Users\lpesek\Desktop\8159587_show-rq-parameters.xml, 
+[2024-06-27 13:21:32,957] DEBUG    (lp.Manager                                        ) : application started
+[2024-06-27 13:21:33,484] DEBUG    (lp.Manager                                        ) : init FX
+[2024-06-27 13:21:33,886] DEBUG    (lp.Manager                                        ) : added LOGO
+[2024-06-27 13:21:36,310] DEBUG    (lp.Manager                                        ) : 
+[2024-06-27 13:21:36,330] DEBUG    (lp.Manager                                        ) : Načtena tato XMLka: C:\Users\lpesek\Desktop\a.xml, C:\Users\lpesek\Desktop\8159587_show-rq-parameters.xml, 
