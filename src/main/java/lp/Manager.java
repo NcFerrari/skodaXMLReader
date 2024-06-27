@@ -9,6 +9,7 @@ import lp.enums.ReportStatus;
 import lp.enums.Suffix;
 import lp.enums.Texts;
 import lp.fe.App;
+import lp.fe.SectorPane;
 import lp.validations.FileValidator;
 import org.apache.logging.log4j.Logger;
 
@@ -81,5 +82,9 @@ public class Manager {
     public void removeItemFromListOfFiles(String fileName) {
         Optional<File> optional = listOfFiles.stream().filter(file -> file.getName().equals(fileName)).findFirst();
         optional.ifPresent(listOfFiles::remove);
+    }
+
+    public SectorPane getSectorPane() {
+        return null;
     }
 }

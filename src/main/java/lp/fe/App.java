@@ -1,6 +1,7 @@
 package lp.fe;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -46,10 +47,10 @@ public class App extends Application {
         stage.show();
 
         addLogo();
-//        settingDragAndDropPane();
-//        SectorPaneData sectorPaneData = new SectorPaneData();
-//        SectorPane sectorPane = new SectorPane(sectorPaneData);
-//        mainPane.getChildren().add(sectorPane);
+        settingDragAndDropPane();
+        SectorPane sectorPane = new SectorPane();
+        mainPane.getChildren().add(sectorPane.getGrid());
+        sectorPane.addData(manager.getSectorPane(), 1);
     }
 
     private void settingDragAndDropPane() {
@@ -171,20 +172,20 @@ public class App extends Application {
 
     private void loadCss(Scene scene) {
         scene.getStylesheets().add(Texts.CSS_BASIC.getText());
-//        Platform.runLater(() -> {
-//            Thread t = new Thread(() -> {
-//                while (true) {
-//                    scene.getStylesheets().remove("file:///C:/temp/temp.css");
-//                    scene.getStylesheets().add("file:///C:/temp/temp.css");
-//                    try {
-//                        Thread.sleep(1000);
-//                    } catch (InterruptedException e) {
-//                        log.error(e);
-//                    }
-//                }
-//            });
-//            t.setDaemon(true);
-//            t.start();
-//        });
+        Platform.runLater(() -> {
+            Thread t = new Thread(() -> {
+                while (true) {
+                    scene.getStylesheets().remove("file:///C:/temp/temp.css");
+                    scene.getStylesheets().add("file:///C:/temp/temp.css");
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        log.error(e);
+                    }
+                }
+            });
+            t.setDaemon(true);
+            t.start();
+        });
     }
 }

@@ -1,0 +1,6 @@
+[2024-05-20 10:02:07,229] DEBUG    (lp.Manager                                        ) : application started
+[2024-05-20 10:02:08,059] DEBUG    (lp.Manager                                        ) : init FX
+[2024-05-20 10:02:08,686] DEBUG    (lp.Manager                                        ) : added LOGO
+[2024-05-20 10:24:20,384] INFO     (lp.Manager                                        ) : false
+[2024-05-20 10:24:59,454] INFO     (lp.Manager                                        ) : false
+[2024-05-20 10:25:34,458] INFO     (lp.Manager                                        ) : false
