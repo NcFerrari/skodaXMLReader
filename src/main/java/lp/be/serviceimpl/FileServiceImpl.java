@@ -1,5 +1,6 @@
 package lp.be.serviceimpl;
 
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import lp.be.service.FileService;
 import lp.be.service.LoggerService;
 import lp.enums.Texts;
@@ -8,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map;
 import java.util.Properties;
 
 public class FileServiceImpl implements FileService {
@@ -48,6 +50,27 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public void loadXMLFile(File xmlFile) {
+        XmlMapper xmlMapper = new XmlMapper();
+        try {
+            Map<String, Object> map = xmlMapper.readValue(xmlFile, Map.class);
+            System.out.println();
+            printMap("", map);
+        } catch (IOException e) {
+            log.error(e);
+            for (StackTraceElement ste : e.getStackTrace()) {
+                log.error(ste);
+            }
+        }
+    }
 
+    private static void printMap(String prefix, Map<String, Object> map) {
+        map.forEach((key, value) -> {
+            if (value instanceof Map) {
+                System.out.println(prefix + "Tag: " + key);
+                printMap(prefix + "  ", (Map<String, Object>) value);
+            } else {
+                System.out.println(prefix + "Tag: " + key + ", Value: " + value);
+            }
+        });
     }
 }

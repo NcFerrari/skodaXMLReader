@@ -71,6 +71,7 @@
   <properties>
     <lombok.version>1.18.30</lombok.version>
     <maven.compiler.target>17</maven.compiler.target>
+    <xml.version>2.17.1</xml.version>
     <logging.version>2.19.0</logging.version>
     <maven.compiler.source>17</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

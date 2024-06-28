@@ -4,6 +4,7 @@ lp\fe\DataPane.class
 lp\Manager.class
 lp\be\service\LoggerService.class
 lp\fe\SectorPane.class
+lp\fe\App$1.class
 lp\validations\FileValidator.class
 lp\enums\ReportStatus.class
 lp\be\SectorData.class
